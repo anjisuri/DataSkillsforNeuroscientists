@@ -1,3 +1,9 @@
+'''
+
+A simple python script to load data from a CSV file and plot it using matplotlib.
+
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
