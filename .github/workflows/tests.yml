@@ -29,7 +29,7 @@ jobs:
     - name: Test some Python scripts
       run: |
         echo "Running tests..."
-        cd Python 
+        cd python 
         python LoadCSVData.py -nogui 
 
     - name: Final information on installed packages
