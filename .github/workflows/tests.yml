@@ -1,0 +1,38 @@
+name: Run GitHub Actions tests
+
+on:
+  push:
+    branches: [ main, development, experimental ]
+  pull_request:
+    branches: [ main, development, experimental ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "3.9", "3.12" ]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python  ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version:  ${{ matrix.python-version }}
+
+    - name: Install requirements
+      run: |
+        pip install -r requirements.txt
+
+    - name: Test some Python scripts
+      run: |
+        echo "Running tests..."
+        cd Python 
+        python LoadCSVData.py -nogui 
+
+    - name: Final information on installed packages
+      run: |
+        echo "Installed packages:"
+        pip list
