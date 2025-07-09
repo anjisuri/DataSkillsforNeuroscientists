@@ -31,6 +31,7 @@ jobs:
         echo "Running tests..."
         cd python 
         python LoadCSVData.py -nogui 
+        python LoadMatData.py -nogui 
 
     - name: Final information on installed packages
       run: |
