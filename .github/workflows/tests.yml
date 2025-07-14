@@ -34,7 +34,11 @@ jobs:
         cd python 
         python LoadCSVData.py -nogui 
         python LoadMatData.py -nogui 
-        python CreateNWB.py.py  
+
+    - name: Test creating NWB file
+      run: |
+        cd python 
+        python CreateNWB.py
 
     - name: Final information on installed packages
       run: |
