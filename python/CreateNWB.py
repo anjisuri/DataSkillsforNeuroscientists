@@ -5,6 +5,8 @@ import pynwb
 import platform
 import hdmf
 
+from LoadMatData import load_mat_file
+
 start_time = datetime.now(tz=tzlocal())
 create_date = datetime.now(tz=tzlocal())
 
@@ -32,11 +34,30 @@ nwbfile = pynwb.NWBFile(
              lab='Silver Lab',
 )
 
+mat_file = "../data/FL90__180316_15_20_48.mat"
+# Load the .mat file
+mat = load_mat_file(mat_file)
+
+neuron_fluorescence_data = mat["allData"]["neurons"]["f"].T
+
+for i in range(len(neuron_fluorescence_data)):
+    cell_id = i
+    print('Adding cell data %i'%cell_id)
+    data = neuron_fluorescence_data[cell_id]
+    
+    # TODO: Not correct units!!!
+    timestamps = [t for t in range(len(data))]
+
+    ts = pynwb.TimeSeries('Sweep_%i'%cell_id, data, 'SIunit', timestamps=timestamps)
+
+    nwbfile.add_acquisition(ts)
+
 nwb_file_name = "Gurnani2021.nwb"
 
 print("Saving NWB file: %s" % nwbfile)
 io = pynwb.NWBHDF5IO(nwb_file_name, mode="w")
 
 print("Written: %s" % info)
+
 io.write(nwbfile)
 io.close()
