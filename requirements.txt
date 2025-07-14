@@ -1,3 +1,4 @@
 numpy
 matplotlib
 mat73 # package for importing MATLAB mat v7.3 files
+pynwb 

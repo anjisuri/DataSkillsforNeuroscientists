@@ -27,12 +27,9 @@ nwbfile = pynwb.NWBFile(
     ref, "NWB123", start_time, file_create_date=create_date, notes=info,
 
              experimenter=main_experimenter,
-             experiment_description=('Data set of CA1 pyramidal cell '
-                                        'recordings using an intact whole '
-                                        'hippocampus preparation, including '
-                                        'recordings of rebound firing'),
-             institution='University of Toronto',
-             lab='Skinner Lab',
+             experiment_description=('This dataset was used in the study “Multidimensional population activity in an electrically coupled inhibitory circuit in the cerebellar cortex” by Gurnani and Silver in Neuron, 2021. It includes pre-processed two-photon imaging data and behavioural data from head-fixed awake mice exhibiting spontaneous whisking and locomotion on a cylindrical wheel.'),
+             institution='University College London',
+             lab='Silver Lab',
 )
 
 nwb_file_name = "Gurnani2021.nwb"
