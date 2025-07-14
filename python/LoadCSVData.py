@@ -15,6 +15,8 @@ filename = "../data/example_data.csv"
 # Assumes numerical data and no header row
 data = np.loadtxt(filename, delimiter=",")
 
+print(f"Loaded data from: {filename}")
+
 print(f"Data has shape: {data.shape} and type: {data.dtype}")
 
 # Plot
